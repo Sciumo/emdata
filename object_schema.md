@@ -6,7 +6,7 @@ The entire EMData data set is contained in a single JSON object.
 
 The EMData object must have a type. Each EMData object should only contain one type of data. (*e.g.*, Near fields should not be mixed with far fields.)
 
-Universally understood types are documented on a separate page. Other, custom types can be used, but they will not be universally recognized. In these cases, data sets will not necessarily be able to be validated or operated on by CEM software.
+Universally understood types are documented [separately][2]. Other, custom types can be used, but they will not be universally recognized. In these cases, data sets will not necessarily be able to be validated or operated on by CEM software.
 
 The EMData object must contain a `data` array. This array is a set of one or more *dataset* objects.
 
@@ -27,7 +27,7 @@ The EMData object can contain any number of other arbitrary keys and values. If 
 * date
 * author
 * frequency - If all data sets share a frequency, it could be defined here
-* position - The 3-D coordinate position of the antenna center point (useful for 3-D plotting)
+* position - The 3-D [coordinate][1] position of the antenna center point (useful for 3-D plotting)
 * orientation - A quaternion (for example) describing how the source was oriented
 * source - Where the data were acquired or how they were generated
 
@@ -58,7 +58,7 @@ A column object must contain a `data` array. This array is a set of one or more 
 
 Depending on the quantity, certain other keys may be required.
 
-Independent variables — such as spatial coordinates, time, t phase — typically only need a `component` and `unit`.
+Independent variables — such as spatial [coordinates][1], time, *ωt* phase — typically only need a `component` and `unit`.
 
 Dependent variables are typically vectors and/or phasors, so they require more keys to describe the components. The keys required for different quantities are documented separately.
 
@@ -67,18 +67,21 @@ Dependent variables are typically vectors and/or phasors, so they require more k
 {
   "quantity": "coordinate",
   "component": "x",
-  "units": "meters",
+  "unit": "meters",
   "data": [
-    // numerics ]
+    // numerics
+  ]
 }
 // column object example: dependent variable
 {
   "quantity": "electric field",
-  "vector component": "x",
-  "phasor component": "magnitude",
-  "units": "V/m",
+  "vectorComponent": "x",
+  "phasorComponent": "magnitude",
+  "unit": "V/m",
   "data": [
     // numerics
   ]
 }
 ```
+[1]:coordinate_systems.md
+[2]:data_types.md
